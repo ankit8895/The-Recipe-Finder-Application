@@ -32,7 +32,7 @@ const recipeListSlice = createSlice({
       state.loading = false;
       state.recipeArray = action.payload;
     });
-    builder.addCase(fetchRecipeList, (state, action) => {
+    builder.addCase(fetchRecipeList.rejected, (state, action) => {
       state.loading = false;
       state.error = action.payload;
     });

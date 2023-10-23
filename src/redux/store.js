@@ -10,7 +10,9 @@ const preloadedState = {
 };
 
 const store = configureStore({
-  recipeList: recipeListReducer,
+  reducer: {
+    recipeList: recipeListReducer,
+  },
   preloadedState,
 });
 
