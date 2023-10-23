@@ -44,7 +44,7 @@ const Header = () => {
             </LinkScroll>
             <LinkScroll
               activeClass='active'
-              to='feature'
+              to='details'
               spy={true}
               smooth={true}
               duration={1000}
@@ -62,7 +62,7 @@ const Header = () => {
             </LinkScroll>
             <LinkScroll
               activeClass='active'
-              to='pricing'
+              to='favourites'
               spy={true}
               smooth={true}
               duration={1000}
@@ -120,7 +120,7 @@ const Header = () => {
             </LinkScroll>
             <LinkScroll
               activeClass='active'
-              to='feature'
+              to='details'
               spy={true}
               smooth={true}
               duration={1000}
@@ -152,7 +152,7 @@ const Header = () => {
             </LinkScroll>
             <LinkScroll
               activeClass='active'
-              to='pricing'
+              to='favourites'
               spy={true}
               smooth={true}
               duration={1000}
