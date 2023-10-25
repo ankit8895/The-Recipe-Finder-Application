@@ -40,3 +40,18 @@ const recipeListSlice = createSlice({
 });
 
 export const recipeListReducer = recipeListSlice.reducer;
+
+const favouritesRecipesSlice = createSlice({
+  name: 'favouritesRecipes',
+  initialState: {
+    favouritesRecipesArray: [],
+  },
+  reducers: {
+    addToFavourites: (state, action) => {
+      state.favouritesRecipesArray = action.payload;
+    },
+    removeFromFavourites: (state, action) => {},
+  },
+});
+
+export const favouritesRecipesReducer = favouritesRecipesSlice.reducer;
