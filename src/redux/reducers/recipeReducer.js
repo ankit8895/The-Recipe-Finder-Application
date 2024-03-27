@@ -5,11 +5,11 @@ export const fetchRecipeList = createAsyncThunk(
   'fetchRecipeList',
   async (text, { rejectWithValue, fulfillWithValue }) => {
     try {
-      const data = await axios.get(
+      const { data } = await axios.get(
         `https://api.edamam.com/api/recipes/v2?type=public&q=${text}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
       );
-      const response = await data.json();
-      return fulfillWithValue(response);
+
+      return fulfillWithValue(data.hits);
     } catch (error) {
       console.log(`Something went wrong: ${error}`);
       throw rejectWithValue(error);
@@ -39,7 +39,7 @@ const recipeListSlice = createSlice({
   },
 });
 
-export const recipeListReducer = recipeListSlice.reducer;
+const recipeListReducer = recipeListSlice.reducer;
 
 const favouritesRecipesSlice = createSlice({
   name: 'favouritesRecipes',
@@ -48,10 +48,40 @@ const favouritesRecipesSlice = createSlice({
   },
   reducers: {
     addToFavourites: (state, action) => {
-      state.favouritesRecipesArray = action.payload;
+      const { id, name, cuisineType, digest, images, ingredientLines } =
+        action.payload;
+      state.favouritesRecipesArray.push({
+        id,
+        name,
+        cuisineType,
+        digest,
+        images,
+        ingredientLines,
+      });
+
+      localStorage.setItem(
+        'favouritesRecipeList',
+        JSON.stringify(state.favouritesRecipesArray)
+      );
     },
-    removeFromFavourites: (state, action) => {},
+    removeFromFavourites: (state, action) => {
+      const { id } = action.payload;
+      state.favouritesRecipesArray = state.favouritesRecipesArray.filter(
+        (favRecipe) => favRecipe.id !== id
+      );
+      localStorage.setItem(
+        'favouritesRecipeList',
+        JSON.stringify(state.favouritesRecipesArray)
+      );
+    },
   },
 });
 
-export const favouritesRecipesReducer = favouritesRecipesSlice.reducer;
+const favouritesRecipesReducer = favouritesRecipesSlice.reducer;
+const favouritesRecipesActions = favouritesRecipesSlice.actions;
+
+export {
+  recipeListReducer,
+  favouritesRecipesReducer,
+  favouritesRecipesActions,
+};
