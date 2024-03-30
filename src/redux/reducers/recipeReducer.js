@@ -6,7 +6,7 @@ export const fetchRecipeList = createAsyncThunk(
   async (text, { rejectWithValue, fulfillWithValue }) => {
     try {
       const { data } = await axios.get(
-        `https://api.edamam.com/api/recipes/v2?type=public&q=${text}&app_id=${process.env.APP_ID}&app_key=${process.env.APP_KEY}`
+        `https://api.edamam.com/api/recipes/v2?type=public&q=${text}&$app_id=4fc2e6f0&app_key=ee561fb90c25e2bc8137ab9751041f93`
       );
 
       return fulfillWithValue(data.hits);

@@ -76,6 +76,11 @@ const DetailsPage = () => {
           </div>
         </div>
       </div>
+      {recipe && (
+        <div className='flex items-center justify-center mb-6'>
+          <img src={recipe.images.REGULAR.url} alt='recipe' />
+        </div>
+      )}
       <div className='mx-4 flex flex-col justify-center'>
         <div className='overflow-x-auto'>
           <div className='mb-10 min-w-full inline-block align-middle'>

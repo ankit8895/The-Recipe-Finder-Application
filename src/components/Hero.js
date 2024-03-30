@@ -15,18 +15,20 @@ const Hero = () => {
     navigate('/search');
   };
   return (
-    <div className='max-w-screen-xl my-24 px-8 xl:px-16 mx-auto' id='about'>
+    <div className='max-w-screen-xl my-16 px-8 xl:px-16 mx-auto' id='about'>
       <ScrollAnimationWrapper>
         <motion.div
           className='grid grid-flow-row sm:grid-flow-col grid-rows-2 md:grid-rows-1 sm:grid-cols-2 gap-8 py-6 sm:py-16'
           variants={scrollAnimation}
         >
-          <div className=' flex flex-col justify-center items-start row-start-2 sm:row-start-1'>
-            <h1 className='text-3xl lg:text-4xl xl:text-5xl font-medium text-black leading-normal'>
-              Find the Perfect Recipe for Any Occasion{' '}
+          <div className=' flex flex-col justify-center text-center md:text-start md:items-start row-start-2 sm:row-start-1'>
+            <h1 className='md:text-start text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-medium text-black leading-normal mb-6 lg:mb-0'>
+              Find the Perfect Recipe{' '}
+              <span className='hidden lg:inline'>for Any Occasion </span>
+              <span className='lg:hidden'>on </span>
               <strong>Culinary Companion</strong>
             </h1>
-            <p className='text-black mt-4 mb-6'>
+            <p className='hidden lg:block text-black mt-4 mb-6'>
               Showcase Your Culinary Creations and Connect with Fellow Food
               Enthusiasts Discover and Share Delectable Dishes with Ease!
             </p>
@@ -40,9 +42,7 @@ const Hero = () => {
           </div>
           <div className='flex w-full'>
             <motion.div className='h-full w-full' variants={scrollAnimation}>
-              <div className='h-[383px] w-[612px]'>
-                <Lottie animationData={animationData} />
-              </div>
+              <Lottie animationData={animationData} />
             </motion.div>
           </div>
         </motion.div>
